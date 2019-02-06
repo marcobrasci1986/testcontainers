@@ -1,0 +1,10 @@
+version: '2'
+services:
+  database:
+    image: postgres
+    ports:
+      - "6432:5432"
+    environment:
+      - POSTGRES_USER=sa
+      - POSTGRES_PASSWORD=sa
+      - POSTGRES_DB=cadastre
