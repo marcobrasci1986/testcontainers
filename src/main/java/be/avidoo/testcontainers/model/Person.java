@@ -5,9 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
@@ -18,10 +16,16 @@ import java.time.LocalDate;
 public class Person {
 
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name = "sequence_generator_person", sequenceName = "seq_person_id", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequence_generator_person")
     private Long id;
 
+    @Column
     private String firstname;
+
+    @Column
     private String lastname;
-    private LocalDate bithdate;
+
+    @Column
+    private LocalDate birthdate;
 }

@@ -28,7 +28,7 @@ public class PersonService {
         Person person = Person.builder()
                 .firstname("Lebron")
                 .lastname("James")
-                .bithdate(LocalDate.of(1986, Month.APRIL, 22))
+                .birthdate(LocalDate.of(1986, Month.APRIL, 22))
                 .build();
 
         return personRepository.save(person);
