@@ -2,7 +2,7 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
   datasource:
     driver-class-name: org.testcontainers.jdbc.ContainerDatabaseDriver
     #https://www.testcontainers.org/modules/databases/: Note that the hostname, port and database name will be ignored; you can leave these as-is or set them to any value.

@@ -28,4 +28,9 @@ public class Person {
 
     @Column
     private LocalDate birthdate;
+
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "department_id")
+    private Department department;
 }

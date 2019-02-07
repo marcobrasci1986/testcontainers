@@ -32,7 +32,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 public class PersonRepositoryTest {
 
     @ClassRule
-    public static PostgreSQLContainer postgres = new PostgreSQLContainer();
+    public static PostgreSQLContainer postgres = new PostgreSQLContainer().withUsername("myUsername");
 
     @Autowired
     ApplicationContext applicationContext;

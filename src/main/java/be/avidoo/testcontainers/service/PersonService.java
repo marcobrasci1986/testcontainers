@@ -1,5 +1,6 @@
 package be.avidoo.testcontainers.service;
 
+import be.avidoo.testcontainers.model.Department;
 import be.avidoo.testcontainers.model.Person;
 import be.avidoo.testcontainers.repository.PersonRepository;
 import lombok.RequiredArgsConstructor;
@@ -25,10 +26,17 @@ public class PersonService {
 
     public Person create() {
 
+        Department department = Department.builder()
+                .departmentName("Java")
+                .capacity(500L)
+                .category("IT")
+                .build();
+
         Person person = Person.builder()
                 .firstname("Lebron")
                 .lastname("James")
                 .birthdate(LocalDate.of(1986, Month.APRIL, 22))
+                .department(department)
                 .build();
 
         return personRepository.save(person);

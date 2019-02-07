@@ -12,26 +12,36 @@
         </or>
     </preConditions>
 
-    <changeSet id="1" author="avidoo">
+    <changeSet id="2" author="avidoo">
         <createSequence catalogName="sequence_catalog"
                         cycle="false"
                         incrementBy="1"
                         maxValue="9999"
                         minValue="1"
                         schemaName="public"
-                        sequenceName="seq_person_id"
+                        sequenceName="seq_department_id"
                         startValue="1"/>
 
-        <createTable tableName="person">
-            <column name="id" type="BIGINT" defaultValueSequenceNext="seq_person_id">
+        <createTable tableName="department">
+            <column name="id" type="BIGINT" defaultValueSequenceNext="seq_department_id">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="firstname" type="varchar(50)"/>
-            <column name="lastname" type="varchar(50)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="birthdate" type="date"/>
+            <column name="department_name" type="varchar(50)"/>
+            <column name="category" type="varchar(50)"/>
+            <column name="capacity" type="BIGINT"/>
         </createTable>
+
+
+        <addColumn tableName="person">
+            <column name="department_id" type="BIGINT"/>
+        </addColumn>
+
+        <addForeignKeyConstraint baseColumnNames="department_id"
+                                 baseTableName="person"
+                                 constraintName="fk_department_person"
+                                 referencedColumnNames="id"
+                                 referencedTableName="department"/>
+
     </changeSet>
 
 </databaseChangeLog>
